@@ -17,14 +17,15 @@ public class SquareElement : SpecialElement
     private BhvSquareIdle m_idle;
     private void Awake()
     {
-        fsm.SwitchSate(EHackType.Idle);
-        m_rootMove = new BhvSquareRootMove(transform, this);
-        m_normalMove = new BhvSquareNormalMove(transform, this);
-        m_idle = new BhvSquareIdle(transform, this);
+
     }
     // Start is called before the first frame update
     protected override void Start()
     {
+        fsm.SwitchSate(EHackType.Idle);
+        m_rootMove = new BhvSquareRootMove(transform, this);
+        m_normalMove = new BhvSquareNormalMove(transform, this);
+        m_idle = new BhvSquareIdle(transform, this);
         base.Start();
     }
 
