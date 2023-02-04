@@ -13,14 +13,15 @@ public class ThornElement : SpecialElement
 
     private void Awake()
     {
-        fsm.SwitchSate(EHackType.Idle);
-        m_warning = new BhvThornWarning(transform, this);
-        m_root = new BhvSquareRootMove(transform, this);
+
     }
 
     // Start is called before the first frame update
     protected override void Start()
     {
+        fsm.SwitchSate(EHackType.Idle);
+        m_warning = new BhvThornWarning(transform, this);
+        m_root = new BhvSquareRootMove(transform, this);
         base.Start();
     }
 

@@ -39,7 +39,6 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
             moveState = state;
             element.actorAnimator.Play("hero run", 0);
         }
-        Debug.Log("SwitchState " + state.ToString());
     }
 
 
@@ -108,7 +107,6 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
             var e = element.GetElement();
             e?.OnNormalHacked();
         }
-        if (moveState != EAcotorMoveState.Idl)
-            Debug.Log(moveState.ToString());
+
     }
 }

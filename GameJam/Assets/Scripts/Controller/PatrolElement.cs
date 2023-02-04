@@ -22,14 +22,15 @@ public class PatrolElement : SpecialElement
     {
         origin = transform.position;
         end = origin + end;
-        fSM.SwitchSate(EHackType.Idle);
-        m_patrolIdle = new BhvPatrol(transform, this);
-        m_patrolRoot = new BhvPatrolRoot(transform, this);
+
     }
 
     // Start is called before the first frame update
     protected override void Start()
     {
+        fSM.SwitchSate(EHackType.Idle);
+        m_patrolIdle = new BhvPatrol(transform, this);
+        m_patrolRoot = new BhvPatrolRoot(transform, this);
         base.Start();
         isAwake = true;
     }

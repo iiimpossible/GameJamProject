@@ -16,7 +16,8 @@ public class BhvSquareIdle : ElementBehaviour<SquareElement>
     // Update is called once per frame
     public override void Update()
     {
-        if (Vector3.Distance(actor.transform.position, transform.position) < element.idleCheckDistance) {
+        float distance = Vector2.Distance(actor.transform.position, transform.position);
+        if (distance < element.idleCheckDistance) {
             if (!cur_enter) {
                 renderer.color = Color.red;
                 actor.SetHackableElement(element);

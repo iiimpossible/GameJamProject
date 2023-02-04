@@ -25,15 +25,16 @@ public class ActorController : SpecialElement
 
     private void Awake()
     {
-        m_idle = new BhvActorIdle(transform, this);
-        m_rootMove = new BhvActorRootMove(transform, this);
-        fsm.SwitchSate(EHackType.Hacked_Root);
+
         //ControllerManager.instance.RigisterActor(this);
     }
 
     // Start is called before the first frame update
     protected override void Start()
     {
+        m_idle = new BhvActorIdle(transform, this);
+        m_rootMove = new BhvActorRootMove(transform, this);
+        fsm.SwitchSate(EHackType.Hacked_Root);
         // base.Start();
     }
 
