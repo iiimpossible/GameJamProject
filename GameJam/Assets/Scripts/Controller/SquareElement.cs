@@ -11,28 +11,21 @@ public class SquareElement : SpecialElement
         Hacked_Controled,
     }
 
-    public enum EMoveDirection
-    {
-        Up,
-        Left,
-        Right,
-        Down,
-    }
 
-
-    [SerializeField]
-    private EMoveDirection direction;
+    public float idleCheckDistance;
     [SerializeField]
     public Vector2 moveDistance;
 
     private LiteFSM fsm = new LiteFSM();
-
+    private BhvSquareRootMove m_rootMove;
+    private BhvSquareNormalMove m_normalMove;
+    private BhvSquareIdle m_idle;
     private void Awake()
     {
         fsm.SwitchSate(ESquareState.Idle);
-        origin = transform.position;
-        target = transform.position + (Vector3)moveDistance;
-
+        m_rootMove = new BhvSquareRootMove(transform, this);
+        m_normalMove = new BhvSquareNormalMove(transform, this);
+        m_idle = new BhvSquareIdle(transform, this);
     }
     // Start is called before the first frame update
     protected override void Start()
@@ -41,48 +34,40 @@ public class SquareElement : SpecialElement
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         if (fsm.IsEqualEnum(ESquareState.Idle)) {
-            this.Idle();
+            m_idle.Update();
         } else if (fsm.IsEqualEnum(ESquareState.Hacked_Unlock)) {
-            this.NomarlyHacked();
+            m_normalMove.Update();
         } else if (fsm.IsEqualEnum(ESquareState.Hacked_Controled)) {
-            this.RootHacked();
+            m_rootMove.Update();
         }
 
     }
 
-
-    protected override void OnOverlayActor()
+    public override void OnIdle()
     {
-        base.OnOverlayActor();
+        base.OnIdle();
+        this.fsm.SwitchSate(ESquareState.Idle);
     }
 
-    protected override void Idle()
+    public override void OnNormalHacked()
     {
+        base.OnNormalHacked();
+        this.fsm.SwitchSate(ESquareState.Hacked_Unlock);
     }
 
-
-    private Vector3 origin;
-    private Vector3 target;
-    [SerializeField]
-    private float progress;
-    [SerializeField]
-    private float speed = 1;
-    protected override void NomarlyHacked()
+    public override void OnRootHacked()
     {
-        progress += Time.deltaTime * speed;
-        if (progress >= 1) return;
-        if (this.direction == EMoveDirection.Left) {
-            transform.position = Vector3.Lerp(origin, target, progress);// (Vector3.right, )
-        }
-
+        base.OnRootHacked();
+        this.fsm.SwitchSate(ESquareState.Hacked_Controled);
     }
 
-    protected override void RootHacked()
+    public override void OnQuitHack()
     {
-        base.RootHacked();
+        base.OnQuitHack();
+        this.fsm.SwitchSate(ESquareState.Idle);
+        Debug.Log("OnQuitHack");
     }
 }

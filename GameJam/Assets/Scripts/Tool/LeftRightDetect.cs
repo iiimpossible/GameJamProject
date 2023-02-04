@@ -20,8 +20,5 @@ public class LeftRightDetect : MonoBehaviour
         Vector2 dir = left ? Vector2.left : Vector2.right;
         var co = Physics2D.Raycast(transform.position, dir, detect);
         stop = co.collider != null;
-        if (co.collider != null) {
-            //Debug.Log(co.collider.name);
-        }
     }
 }

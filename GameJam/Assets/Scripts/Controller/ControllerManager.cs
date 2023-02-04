@@ -39,8 +39,23 @@ public class ControllerManager : MonoBehaviour
         this.actor = actor;
     }
 
-    public void Hacking(SpecialElement element)
+    public void EnterHack(SpecialElement element)
     {
+        actor.OnIdle();
+        element.OnRootHacked();
+    }
 
+    public void QuitHack()
+    {
+        actor.curHackableElemet = null;
+        actor.OnRootHacked();
+        foreach (var item in elements) {
+            item.OnQuitHack();
+        }
+    }
+
+    public ActorController GetActor()
+    {
+        return this.actor;
     }
 }

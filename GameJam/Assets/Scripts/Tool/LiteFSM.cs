@@ -10,6 +10,7 @@ public class LiteFSM
     public void SwitchSate(Enum state)
     {
         curState = state;
+
     }
 
     public bool IsEqualEnum(Enum e)

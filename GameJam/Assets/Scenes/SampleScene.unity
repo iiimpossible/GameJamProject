@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 373106852}
   - component: {fileID: 373106851}
   - component: {fileID: 373106849}
+  - component: {fileID: 373106853}
   - component: {fileID: 373106850}
   m_Layer: 0
   m_Name: SquareElemet
@@ -226,8 +227,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e84a824136149498841156f0b996ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 1757719979}
-  distance: 3.09
+  jumpFactor: 1
+  mass: 0.5
+  gravity: 10
+  velocity: 29.56
+  wallDetectDistance: 0.5
+  idleCheckDistance: 3.26
+  moveDistance: {x: 17.27, y: 0}
 --- !u!212 &373106851
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -293,6 +299,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &373106853
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373106848}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &485258404
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +548,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612559279
 GameObject:
@@ -1440,6 +1467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elements: []
+  actor: {fileID: 1757719982}
 --- !u!4 &1371476886
 Transform:
   m_ObjectHideFlags: 0
@@ -1777,7 +1805,7 @@ Transform:
   - {fileID: 1224429722}
   - {fileID: 286211329}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1757719982
 MonoBehaviour:
@@ -1798,6 +1826,7 @@ MonoBehaviour:
   detect: 3
   detectLeft: {fileID: 1224429723}
   detectRight: {fileID: 286211330}
+  curHackableElemet: {fileID: 0}
 --- !u!50 &1757719983
 Rigidbody2D:
   serializedVersion: 4

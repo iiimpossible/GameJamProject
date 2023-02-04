@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class SpecialElement : MonoBehaviour
 {
-    public GameObject actor;
-    public float distance;
-    private bool enter;
+    /// <summary>
+    /// 检测是否碰到两边的墙的偏移
+    /// </summary>
+    public float wallDetectDistance = 0.5f;
+    [Range(100f, 1000f)]
+    public float jumpFactor = 1;
+    public float mass = 0.5f;
+    public float gravity = 10;
+    public float velocity = 1;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -14,34 +20,26 @@ public class SpecialElement : MonoBehaviour
         ControllerManager.instance.Rigister(this);
     }
 
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        Debug.Log(Vector3.Distance(actor.transform.position, transform.position));
-        if (Vector3.Distance(actor.transform.position, transform.position) < distance) {
 
-            OnOverlayActor();
-        }
+    public virtual void OnIdle()
+    {
+
+
     }
 
-
-    protected virtual void OnOverlayActor()
-    {
-        Debug.Log("Actor");
-    }
-
-    protected virtual void Idle()
+    public virtual void OnNormalHacked()
     {
 
     }
 
-    protected virtual void NomarlyHacked()
+    public virtual void OnRootHacked()
     {
 
     }
 
-    protected virtual void RootHacked()
+    public virtual void OnQuitHack()
     {
 
     }
+
 }

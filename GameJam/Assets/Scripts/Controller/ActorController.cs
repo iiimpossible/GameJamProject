@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ActorController : MonoBehaviour
+public class ActorController : SpecialElement
 {
     enum EMoveState
     {
@@ -11,66 +11,60 @@ public class ActorController : MonoBehaviour
         Idle,
     }
 
-    private BoxCollider2D box;
-    private Rigidbody2D rigidbody;
-    [Range(100f, 1000f)]
-    public float jumpFactor = 1;
-    public float mass = 0.5f;
-    public float gravity = 10;
-    public float velocity = 1;
     [Range(0.01f, 100)]
     public float detect = 0.1f;
     public LeftRightDetect detectLeft;
     public LeftRightDetect detectRight;
 
     private LiteFSM fsm = new LiteFSM();
+    public SpecialElement curHackableElemet;
+
+    private BhvActorRootMove m_rootMove;
+    private BhvActorIdle m_idle;
 
     private void Awake()
     {
-        rigidbody = transform.GetComponent<Rigidbody2D>();
-        box = transform.GetComponent<BoxCollider2D>();
-        rigidbody.mass = mass;
-        rigidbody.gravityScale = gravity;
-        fsm.SwitchSate(EMoveState.Idle);
+        m_idle = new BhvActorIdle(transform, this);
+        m_rootMove = new BhvActorRootMove(transform, this);
+        fsm.SwitchSate(EHackType.Hacked_Root);
         ControllerManager.instance.RigisterActor(this);
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-
+        // base.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            if (rigidbody.velocity.sqrMagnitude > 0.1f) return;
-            Debug.Log("Addforce ");
-            rigidbody.AddForce(Vector2.up * jumpFactor);
-        }
-
-
-
-        float a = Input.GetAxis("Horizontal");
-
-        if (a > 0) {
-            if (!detectRight.stop) {
-                transform.Translate(Vector3.right * a * velocity * Time.deltaTime);
-            }
-        } else if (a < 0) {
-            if (!detectLeft.stop) {
-                transform.Translate(Vector3.right * a * velocity * Time.deltaTime);
-            }
+        if (fsm.IsEqualEnum(EHackType.Idle)) {
+            this.m_idle.Update();
+        } else if (fsm.IsEqualEnum(EHackType.Hacked_Root)) {
+            this.m_rootMove.Update();
         }
     }
 
-    private void OnDrawGizmos()
+
+
+    public override void OnIdle()
     {
-        Debug.DrawLine(transform.position, transform.position + Vector3.right * 10);
-        Debug.DrawLine(transform.position, transform.position + Vector3.left * 10);
+        base.OnIdle();
+        this.fsm.SwitchSate(EHackType.Idle);
     }
 
+    public override void OnNormalHacked()
+    {
+        base.OnNormalHacked();
+        this.fsm.SwitchSate(EHackType.Hacked_Normal);
+    }
 
+    public override void OnRootHacked()
+    {
+        base.OnRootHacked();
+        this.curHackableElemet = null;
+        this.fsm.SwitchSate(EHackType.Hacked_Root);
+    }
 }
