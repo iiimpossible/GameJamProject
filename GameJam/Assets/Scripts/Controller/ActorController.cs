@@ -11,6 +11,7 @@ public class ActorController : SpecialElement
         Idle,
     }
 
+    public Animator actorAnimator;
     [Range(0.01f, 100)]
     public float detect = 0.1f;
     [SerializeField]

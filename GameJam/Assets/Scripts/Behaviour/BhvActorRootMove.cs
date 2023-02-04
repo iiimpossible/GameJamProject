@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class BhvActorRootMove : ElementBehaviour<ActorController>
 {
+
+    enum EAcotorMoveState
+    {
+        Jump,
+        Run,
+        Idl,
+    }
+
     private Rigidbody2D rigidbody;
+    private SpriteRenderer renderer;
+    private bool m_ismoving;
+    private bool m_isJumping;
+    EAcotorMoveState moveState = EAcotorMoveState.Idl;
+
     public BhvActorRootMove(Transform trans, ActorController contorller) : base(trans, contorller)
     {
         rigidbody = element.GetComponent<Rigidbody2D>();
+        renderer = element.GetComponent<SpriteRenderer>();
         rigidbody.mass = element.mass;
         rigidbody.gravityScale = element.gravity;
     }
 
 
+    private void SwitchState(EAcotorMoveState state)
+    {
+        if (state == EAcotorMoveState.Idl) {
+            moveState = state;
+            element.actorAnimator.Play("hero idle", 0);
+        } else if (state == EAcotorMoveState.Jump) {
+            moveState = state;
+            element.actorAnimator.Play("hero jump", 0);
+        } else if (state == EAcotorMoveState.Run) {
+            moveState = state;
+            element.actorAnimator.Play("hero run", 0);
+        }
+        Debug.Log("SwitchState " + state.ToString());
+    }
 
 
     // Update is called once per frame
@@ -20,8 +48,18 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (rigidbody.velocity.sqrMagnitude > 0.1f) {
+
             } else {
                 rigidbody.AddForce(Vector2.up * element.jumpFactor);
+                if (moveState == EAcotorMoveState.Idl || moveState == EAcotorMoveState.Run)
+                    SwitchState(EAcotorMoveState.Jump);
+                return;
+            }
+        }
+
+        if (rigidbody.velocity.sqrMagnitude < 4f) {
+            if (moveState == EAcotorMoveState.Jump) {
+                SwitchState(EAcotorMoveState.Idl);
             }
         }
 
@@ -46,9 +84,31 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
             element.SetMoving(false);
         }
 
+        if (a > 0) {
+            renderer.flipX = false;
+        } else if (a < 0) {
+            renderer.flipX = true;
+        }
+
+
+        if (moveState != EAcotorMoveState.Jump) {
+            if (a != 0) {
+                if (moveState == EAcotorMoveState.Idl) {
+                    this.SwitchState(EAcotorMoveState.Run);
+                }
+            } else {
+                if (moveState == EAcotorMoveState.Run) {
+                    this.SwitchState(EAcotorMoveState.Idl);
+                }
+            }
+
+        }
+
         if (Input.GetKeyDown(KeyCode.J)) {
             var e = element.GetElement();
             e?.OnNormalHacked();
         }
+        if (moveState != EAcotorMoveState.Idl)
+            Debug.Log(moveState.ToString());
     }
 }

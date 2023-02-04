@@ -22,3 +22,9 @@ public class LiteFSM
         return curState.Equals(e);
     }
 }
+
+
+public class Transition
+{ }
+
+

@@ -423,7 +423,7 @@ Transform:
   m_Children:
   - {fileID: 141058458}
   - {fileID: 1445736545}
-  - {fileID: 275901085348447666}
+  - {fileID: 8014736637180151052}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -442,9 +442,8 @@ MonoBehaviour:
   over: {fileID: 0}
   start: {fileID: 1445736544}
   highLight: {fileID: 141058457}
+  actor: {fileID: 0}
   elements: []
-  actor: {fileID: 275901085348447665}
-  curHackableElemet: {fileID: 0}
 --- !u!114 &5071129750822027453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,80 +456,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29c4f12e4288e9429d15bb9299058b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &473518466
+--- !u!1001 &477409605126598812
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 5071129750822027455}
     m_Modifications:
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.840535
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7003069
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7968957
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399987, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
+    - target: {fileID: 7609404417451799983, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: m_Name
+      value: hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924595511295740179, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: detect
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924595511295740179, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: jumpFactor
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 275901085551399990, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
-      propertyPath: m_Name
-      value: Actor
+    - target: {fileID: 8924595511295740179, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: wallDetectDistance
+      value: 0.132
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
---- !u!4 &275901085348447666 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+--- !u!4 &8014736637180151052 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 275901085551399984, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
-  m_PrefabInstance: {fileID: 473518466}
+  m_CorrespondingSourceObject: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+  m_PrefabInstance: {fileID: 477409605126598812}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &275901085348447665 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 275901085551399987, guid: d80c88ba17bb0ef43aa858b4d35059ea, type: 3}
-  m_PrefabInstance: {fileID: 473518466}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12ea068bd3ed1dc458dcdfcd1ad61c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

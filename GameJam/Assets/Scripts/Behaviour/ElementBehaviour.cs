@@ -104,7 +104,6 @@ public class ElementBehaviour<T> where T : SpecialElement
     {
         List<GameObject> temp = new List<GameObject>();
         var hits = Physics2D.BoxCastAll(trans.transform.position + offset, size, 0, Vector2.up, size.y * distance);
-        Debug.Log(hits.Length);
         foreach (var item in hits) {
             foreach (var l in layers) {
                 if (item.collider.gameObject.layer == LayerMask.NameToLayer(l)) {
