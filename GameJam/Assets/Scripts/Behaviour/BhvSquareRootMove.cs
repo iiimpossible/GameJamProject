@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class BhvSquareRootMove : ElementBehaviour<SpecialElement>
 {
-    private ActorController actor;
+
     private Rigidbody2D rigidbody;
 
-    public BhvSquareRootMove(Transform trans, SquareElement e) : base(trans, e)
+    public BhvSquareRootMove(Transform trans, SpecialElement e) : base(trans, e)
     {
         this.rigidbody = element.GetComponent<Rigidbody2D>();
-        actor = ControllerManager.instance.GetActor();
         rigidbody.mass = element.mass;
         rigidbody.gravityScale = element.gravity;
     }
@@ -22,7 +21,6 @@ public class BhvSquareRootMove : ElementBehaviour<SpecialElement>
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (rigidbody.velocity.sqrMagnitude > 0.1f) return;
-            Debug.Log("Addforce ");
             rigidbody.AddForce(Vector2.up * element.jumpFactor);
         }
 
@@ -43,7 +41,7 @@ public class BhvSquareRootMove : ElementBehaviour<SpecialElement>
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.O)) {
+        if (Input.GetKeyDown(KeyCode.L)) {
             ControllerManager.instance.QuitHack();
         }
     }

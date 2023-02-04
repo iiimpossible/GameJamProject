@@ -20,7 +20,6 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (rigidbody.velocity.sqrMagnitude > 0.1f) return;
-            Debug.Log("Addforce ");
             rigidbody.AddForce(Vector2.up * element.jumpFactor);
         }
 

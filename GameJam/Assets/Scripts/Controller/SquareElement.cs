@@ -31,6 +31,7 @@ public class SquareElement : SpecialElement
     // Update is called once per frame
     protected void Update()
     {
+        if (GameStateManager.instance.GetGameStateType() == EGameStateType.HackingGame) return;
         if (fsm.IsEqualEnum(EHackType.Idle)) {
             m_idle.Update();
         } else if (fsm.IsEqualEnum(EHackType.Hacked_Normal)) {

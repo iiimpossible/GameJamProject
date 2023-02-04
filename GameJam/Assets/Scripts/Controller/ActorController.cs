@@ -37,7 +37,7 @@ public class ActorController : SpecialElement
     // Update is called once per frame
     void Update()
     {
-
+        if (GameStateManager.instance.GetGameStateType() == EGameStateType.HackingGame) return;
         if (fsm.IsEqualEnum(EHackType.Idle)) {
             this.m_idle.Update();
         } else if (fsm.IsEqualEnum(EHackType.Hacked_Root)) {
