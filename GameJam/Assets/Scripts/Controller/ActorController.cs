@@ -32,7 +32,7 @@ public class ActorController : MonoBehaviour
         rigidbody.mass = mass;
         rigidbody.gravityScale = gravity;
         fsm.SwitchSate(EMoveState.Idle);
-
+        ControllerManager.instance.RigisterActor(this);
     }
 
     // Start is called before the first frame update
@@ -57,11 +57,11 @@ public class ActorController : MonoBehaviour
 
         if (a > 0) {
             if (!detectRight.stop) {
-                transform.Translate(Vector3.right * a * velocity);
+                transform.Translate(Vector3.right * a * velocity * Time.deltaTime);
             }
         } else if (a < 0) {
             if (!detectLeft.stop) {
-                transform.Translate(Vector3.right * a * velocity);
+                transform.Translate(Vector3.right * a * velocity * Time.deltaTime);
             }
         }
     }

@@ -11,4 +11,9 @@ public class LiteFSM
     {
         curState = state;
     }
+
+    public bool IsEqualEnum(Enum e)
+    {
+        return curState.Equals(e);
+    }
 }
