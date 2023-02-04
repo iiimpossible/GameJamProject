@@ -84,6 +84,37 @@ public class ElementBehaviour<T> where T : SpecialElement
         return false;
     }
 
+    public static GameObject CheckBoxWithElment(Transform trans, Vector2 size, float distance, Vector3 offset = default, params string[] layers)
+    {
+        var hits = Physics2D.BoxCastAll(trans.transform.position + offset, size, 0, Vector2.up, size.y * distance);
+        Debug.Log(hits.Length);
+        foreach (var item in hits) {
+            foreach (var l in layers) {
+
+                if (item.collider.gameObject.layer == LayerMask.NameToLayer(l)) {
+                    Debug.Log(item.collider.name);
+                    return item.collider.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+
+    public static GameObject[] CheckBoxWithElmentArray(Transform trans, Vector2 size, float distance, Vector3 offset = default, params string[] layers)
+    {
+        List<GameObject> temp = new List<GameObject>();
+        var hits = Physics2D.BoxCastAll(trans.transform.position + offset, size, 0, Vector2.up, size.y * distance);
+        Debug.Log(hits.Length);
+        foreach (var item in hits) {
+            foreach (var l in layers) {
+                if (item.collider.gameObject.layer == LayerMask.NameToLayer(l)) {
+                    temp.Add(item.collider.gameObject);
+                }
+            }
+        }
+        return temp.ToArray();
+    }
+
     public static bool LerpMove(Transform trans, ref Vector3 origin, ref Vector3 target, ref float progress, ref float speed)
     {
         progress += Time.deltaTime * speed;

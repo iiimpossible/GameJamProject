@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 275901085551399986}
   - component: {fileID: 275901085551399981}
   - component: {fileID: 275901085551399987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Actor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,4 +150,5 @@ MonoBehaviour:
   gravity: 1
   velocity: 1.22
   detect: 3
-  curHackableElemet: {fileID: 0}
+  fsm:
+    state: 

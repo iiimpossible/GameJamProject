@@ -13,7 +13,6 @@ public class ControllerManager : MonoBehaviour
     private ActorController actor;
     [SerializeField]
     public List<SpecialElement> elements = new List<SpecialElement>();
-    public SpecialElement curHackableElemet;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -42,20 +41,23 @@ public class ControllerManager : MonoBehaviour
         this.actor = actor;
     }
 
+    private SpecialElement m_curHackedElement;
     public void EnterHack(SpecialElement element)
     {
+        this.QuitHack();
         actor.OnIdle();
         element.OnRootHacked();
         this.QuitHackMode();
+        m_curHackedElement = element;
     }
 
     public void QuitHack()
     {
-        curHackableElemet = null;
         actor.OnRootHacked();
         foreach (var item in elements) {
             item.OnQuitHack();
         }
+        m_curHackedElement = null;
     }
 
     public ActorController GetActor()
@@ -117,5 +119,10 @@ public class ControllerManager : MonoBehaviour
     public void ActorToStart()
     {
         actor.transform.position = start.transform.position;
+    }
+
+    public bool IsHacking()
+    {
+        return m_curHackedElement != null;
     }
 }

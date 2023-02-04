@@ -15,6 +15,7 @@ public class SpecialElement : MonoBehaviour
     public float gravity = 10;
     [Range(0.1f, 10f)]
     public float velocity = 1;
+    protected bool m_isMoving;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -42,6 +43,21 @@ public class SpecialElement : MonoBehaviour
     public virtual void OnQuitHack()
     {
 
+    }
+
+    public virtual void OnDie()
+    {
+
+    }
+
+    public bool IsMoving()
+    {
+        return m_isMoving;
+    }
+
+    public void SetMoving(bool move)
+    {
+        m_isMoving = move;
     }
 
 }

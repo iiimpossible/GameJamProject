@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4765779579674022838}
   - component: {fileID: 4765779579674022837}
   - component: {fileID: 3383201556466539764}
+  - component: {fileID: 2642156288248470299}
   m_Layer: 0
   m_Name: Fire 2
   m_TagString: Untagged
@@ -113,7 +114,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -129,6 +130,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.18}
   m_EdgeRadius: 0
+--- !u!114 &2642156288248470299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765779579674022836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd35fbb2e537584caedd07f347103fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectSize: {x: 0.16, y: 0.7}
+  actorLayer: Actor
+  elemetLayer: Element
+  distance: 0.18
 --- !u!1 &4765779580062216870
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +158,7 @@ GameObject:
   - component: {fileID: 4765779580062216888}
   - component: {fileID: 4765779580062216871}
   - component: {fileID: 960835220528452581}
+  - component: {fileID: 8365259658587412300}
   m_Layer: 0
   m_Name: Fire 4
   m_TagString: Untagged
@@ -242,7 +260,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -258,6 +276,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.18}
   m_EdgeRadius: 0
+--- !u!114 &8365259658587412300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765779580062216870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd35fbb2e537584caedd07f347103fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectSize: {x: 0.16, y: 0.7}
+  actorLayer: Actor
+  elemetLayer: Element
+  distance: 0.18
 --- !u!1 &4765779580117041008
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +304,7 @@ GameObject:
   - component: {fileID: 4765779580117041010}
   - component: {fileID: 4765779580117041009}
   - component: {fileID: 5750599730873716892}
+  - component: {fileID: 4730843142435434567}
   m_Layer: 0
   m_Name: Fire 1
   m_TagString: Untagged
@@ -371,7 +406,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -387,6 +422,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.18}
   m_EdgeRadius: 0
+--- !u!114 &4730843142435434567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765779580117041008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd35fbb2e537584caedd07f347103fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectSize: {x: 0.16, y: 0.7}
+  actorLayer: Actor
+  elemetLayer: Element
+  distance: 0.18
 --- !u!1 &4765779581548156204
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765779581548156205}
+  - component: {fileID: 1242785083859406007}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -421,6 +473,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1242785083859406007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765779581548156204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c3dcdb872a3784495ff33c018aa07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4765779581587570762
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +497,7 @@ GameObject:
   - component: {fileID: 4765779581587570764}
   - component: {fileID: 4765779581587570763}
   - component: {fileID: 6369854166116725613}
+  - component: {fileID: 4748801584599041874}
   m_Layer: 0
   m_Name: Fire 3
   m_TagString: Untagged
@@ -534,7 +599,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -550,3 +615,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.18}
   m_EdgeRadius: 0
+--- !u!114 &4748801584599041874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765779581587570762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd35fbb2e537584caedd07f347103fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectSize: {x: 0.16, y: 0.7}
+  actorLayer: Actor
+  elemetLayer: Element
+  distance: 0.18
