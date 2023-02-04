@@ -19,14 +19,17 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
     public override void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            if (rigidbody.velocity.sqrMagnitude > 0.1f) return;
-            rigidbody.AddForce(Vector2.up * element.jumpFactor);
+            if (rigidbody.velocity.sqrMagnitude > 0.1f) {
+            } else {
+                rigidbody.AddForce(Vector2.up * element.jumpFactor);
+            }
         }
 
         float a = Input.GetAxis("Horizontal");
         if (a != 0) {
             var value = CheckWall(transform, transform.position, element.wallDetectDistance);
             if (value == ElementBehaviour<ActorController>.ECheckWallType.All) {
+
             } else if (value == ElementBehaviour<ActorController>.ECheckWallType.Left) {
                 if (a > 0) {
                     transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
@@ -38,17 +41,14 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
             } else {
                 transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.F)) {
-            ControllerManager.instance.curHackableElemet?.OnNormalHacked();
+            element.SetMoving(true);
+        } else {
+            element.SetMoving(false);
         }
 
         if (Input.GetKeyDown(KeyCode.J)) {
-            if (ControllerManager.instance.curHackableElemet != null) {
-                ControllerManager.instance.curHackableElemet?.OnRootHacked();
-                ControllerManager.instance.EnterHack(ControllerManager.instance.curHackableElemet);
-            }
+            var e = element.GetElement();
+            e?.OnNormalHacked();
         }
     }
 }

@@ -19,6 +19,8 @@ public class ActorController : SpecialElement
 
     private BhvActorRootMove m_rootMove;
     private BhvActorIdle m_idle;
+    [SerializeField]
+    private SpecialElement m_curHackableElement;
 
     private void Awake()
     {
@@ -65,4 +67,22 @@ public class ActorController : SpecialElement
         //this.curHackableElemet = null;
         this.fsm.SwitchSate(EHackType.Hacked_Root);
     }
+
+    public override void OnDie()
+    {
+        base.OnDie();
+        // gameObject.SetActive(false);
+        ControllerManager.instance.ActorToStart();
+    }
+
+    public void SetHackableElement(SpecialElement element)
+    {
+        m_curHackableElement = element;
+    }
+
+    public SpecialElement GetElement()
+    {
+        return m_curHackableElement;
+    }
+
 }

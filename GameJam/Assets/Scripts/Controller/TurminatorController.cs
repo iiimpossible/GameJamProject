@@ -77,6 +77,7 @@ public class TurminatorController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.J)) {
+            if (ControllerManager.instance.IsHacking()) return;
             var elemet = ControllerManager.instance.GetSelectedElement();
             if (elemet != null) {
                 elemet.OnRootHacked();

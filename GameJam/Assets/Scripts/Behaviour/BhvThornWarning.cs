@@ -17,7 +17,7 @@ public class BhvThornWarning : ElementBehaviour<ThornElement>
         var hits = Physics2D.BoxCastAll(transform.position, element.deteckSize, 0, Vector2.up, element.deteckSize.y / 2);
         foreach (var item in hits) {
             if (item.collider.name == ControllerManager.instance.GetActor().name) {
-                ControllerManager.instance.GetActor().gameObject.SetActive(false);
+                ControllerManager.instance.GetActor().OnDie();
             }
         }
     }
