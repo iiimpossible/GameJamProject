@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class SquareElement : SpecialElement
 {
-    public enum ESquareState
-    {
-        Idle,
-        Hacked_Unlock,
-        Hacked_Controled,
-    }
+
 
 
     public float idleCheckDistance;
@@ -22,7 +17,7 @@ public class SquareElement : SpecialElement
     private BhvSquareIdle m_idle;
     private void Awake()
     {
-        fsm.SwitchSate(ESquareState.Idle);
+        fsm.SwitchSate(EHackType.Idle);
         m_rootMove = new BhvSquareRootMove(transform, this);
         m_normalMove = new BhvSquareNormalMove(transform, this);
         m_idle = new BhvSquareIdle(transform, this);
@@ -36,11 +31,11 @@ public class SquareElement : SpecialElement
     // Update is called once per frame
     protected void Update()
     {
-        if (fsm.IsEqualEnum(ESquareState.Idle)) {
+        if (fsm.IsEqualEnum(EHackType.Idle)) {
             m_idle.Update();
-        } else if (fsm.IsEqualEnum(ESquareState.Hacked_Unlock)) {
+        } else if (fsm.IsEqualEnum(EHackType.Hacked_Normal)) {
             m_normalMove.Update();
-        } else if (fsm.IsEqualEnum(ESquareState.Hacked_Controled)) {
+        } else if (fsm.IsEqualEnum(EHackType.Hacked_Root)) {
             m_rootMove.Update();
         }
 
@@ -49,25 +44,27 @@ public class SquareElement : SpecialElement
     public override void OnIdle()
     {
         base.OnIdle();
-        this.fsm.SwitchSate(ESquareState.Idle);
+        this.fsm.SwitchSate(EHackType.Idle);
     }
 
     public override void OnNormalHacked()
     {
         base.OnNormalHacked();
-        this.fsm.SwitchSate(ESquareState.Hacked_Unlock);
+        if (m_normalMove.reached) return;
+        this.fsm.SwitchSate(EHackType.Hacked_Normal);
     }
 
     public override void OnRootHacked()
     {
         base.OnRootHacked();
-        this.fsm.SwitchSate(ESquareState.Hacked_Controled);
+
+        this.fsm.SwitchSate(EHackType.Hacked_Root);
     }
 
     public override void OnQuitHack()
     {
         base.OnQuitHack();
-        this.fsm.SwitchSate(ESquareState.Idle);
+        this.fsm.SwitchSate(EHackType.Idle);
         Debug.Log("OnQuitHack");
     }
 }

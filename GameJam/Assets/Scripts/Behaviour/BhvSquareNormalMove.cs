@@ -11,6 +11,7 @@ public class BhvSquareNormalMove : ElementBehaviour<SquareElement>
     private float progress;
     [SerializeField]
     private float speed = 1;
+    public bool reached { get; private set; }
     public BhvSquareNormalMove(Transform trans, SquareElement e) : base(trans, e)
     {
         origin = transform.position;
@@ -28,8 +29,12 @@ public class BhvSquareNormalMove : ElementBehaviour<SquareElement>
 
     protected void NomarlyHacked()
     {
+        if (reached) return;
         progress += Time.deltaTime * speed;
-        if (progress >= 1) return;
+        if (progress >= 1) {
+            reached = true;
+            element.OnIdle();
+        }
         transform.position = Vector3.Lerp(origin, target, progress);
     }
 }
