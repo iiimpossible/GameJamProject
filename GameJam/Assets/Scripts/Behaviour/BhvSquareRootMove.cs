@@ -26,28 +26,24 @@ public class BhvSquareRootMove : ElementBehaviour<SpecialElement>
             rigidbody.AddForce(Vector2.up * element.jumpFactor);
         }
 
-
-
         float a = Input.GetAxis("Horizontal");
-
-
-
-
-        if (a > 0) {
-            var value = CheckWall(actor.transform, actor.transform.position, element.wallDetectDistance);
-            if (value != ElementBehaviour<SpecialElement>.ECheckWallType.Right
-                || value != ElementBehaviour<SpecialElement>.ECheckWallType.All) {
-                transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
-            }
-        } else if (a < 0) {
-            var value = CheckWall(actor.transform, actor.transform.position, element.wallDetectDistance);
-            if (value != ElementBehaviour<SpecialElement>.ECheckWallType.Left
-                || value != ElementBehaviour<SpecialElement>.ECheckWallType.All) {
+        if (a != 0) {
+            var value = CheckWall(transform, transform.position, element.wallDetectDistance);
+            if (value == ElementBehaviour<SpecialElement>.ECheckWallType.All) {
+            } else if (value == ElementBehaviour<SpecialElement>.ECheckWallType.Left) {
+                if (a > 0) {
+                    transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
+                }
+            } else if (value == ElementBehaviour<SpecialElement>.ECheckWallType.Right) {
+                if (a < 0) {
+                    transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
+                }
+            } else {
                 transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.J)) {
+        if (Input.GetKeyDown(KeyCode.O)) {
             ControllerManager.instance.QuitHack();
         }
     }

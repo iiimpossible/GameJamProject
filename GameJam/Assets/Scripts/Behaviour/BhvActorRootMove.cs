@@ -24,28 +24,31 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
             rigidbody.AddForce(Vector2.up * element.jumpFactor);
         }
 
-
-
         float a = Input.GetAxis("Horizontal");
-
-        if (a > 0) {
-            if (!element.detectRight.stop) {
-                transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
-            }
-        } else if (a < 0) {
-            if (!element.detectLeft.stop) {
+        if (a != 0) {
+            var value = CheckWall(transform, transform.position, element.wallDetectDistance);
+            if (value == ElementBehaviour<ActorController>.ECheckWallType.All) {
+            } else if (value == ElementBehaviour<ActorController>.ECheckWallType.Left) {
+                if (a > 0) {
+                    transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
+                }
+            } else if (value == ElementBehaviour<ActorController>.ECheckWallType.Right) {
+                if (a < 0) {
+                    transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
+                }
+            } else {
                 transform.Translate(Vector3.right * a * element.velocity * Time.deltaTime);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.F)) {
-            element.curHackableElemet?.OnNormalHacked();
+            ControllerManager.instance.curHackableElemet?.OnNormalHacked();
         }
 
         if (Input.GetKeyDown(KeyCode.J)) {
-            if (element.curHackableElemet != null) {
-                element.curHackableElemet?.OnRootHacked();
-                ControllerManager.instance.EnterHack(element.curHackableElemet);
+            if (ControllerManager.instance.curHackableElemet != null) {
+                ControllerManager.instance.curHackableElemet?.OnRootHacked();
+                ControllerManager.instance.EnterHack(ControllerManager.instance.curHackableElemet);
             }
         }
     }

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
 public class LiteFSM
 {
-    public Enum curState { get; private set; }
 
-    public void SwitchSate(Enum state)
+    public Enum curState { get { return m_curState; } }
+    [SerializeField]
+    public string state;
+    private Enum m_curState;
+    public void SwitchSate(Enum s)
     {
-        curState = state;
-
+        m_curState = s;
+        state = s.ToString();
     }
 
     public bool IsEqualEnum(Enum e)

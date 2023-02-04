@@ -10,7 +10,7 @@ public class ControllerManager : MonoBehaviour
     public List<SpecialElement> elements = new List<SpecialElement>();
     [SerializeField]
     private ActorController actor;
-
+    public SpecialElement curHackableElemet;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -47,7 +47,7 @@ public class ControllerManager : MonoBehaviour
 
     public void QuitHack()
     {
-        actor.curHackableElemet = null;
+        curHackableElemet = null;
         actor.OnRootHacked();
         foreach (var item in elements) {
             item.OnQuitHack();

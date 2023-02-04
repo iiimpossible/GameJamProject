@@ -19,13 +19,13 @@ public class BhvSquareIdle : ElementBehaviour<SquareElement>
         if (Vector3.Distance(actor.transform.position, transform.position) < element.idleCheckDistance) {
             if (!cur_enter) {
                 renderer.color = Color.red;
-                actor.curHackableElemet = element;
+                ControllerManager.instance.curHackableElemet = element;
             }
             cur_enter = true;
         } else {
             if (cur_enter) {
                 renderer.color = Color.white;
-                actor.curHackableElemet = null;
+                ControllerManager.instance.curHackableElemet = null;
             }
             cur_enter = false;
         }

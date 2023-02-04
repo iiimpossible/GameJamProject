@@ -10,7 +10,7 @@ public class SquareElement : SpecialElement
     public float idleCheckDistance;
     [SerializeField]
     public Vector2 moveDistance;
-
+    [SerializeField]
     private LiteFSM fsm = new LiteFSM();
     private BhvSquareRootMove m_rootMove;
     private BhvSquareNormalMove m_normalMove;

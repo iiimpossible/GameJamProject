@@ -13,11 +13,9 @@ public class ActorController : SpecialElement
 
     [Range(0.01f, 100)]
     public float detect = 0.1f;
-    public LeftRightDetect detectLeft;
-    public LeftRightDetect detectRight;
-
+    [SerializeField]
     private LiteFSM fsm = new LiteFSM();
-    public SpecialElement curHackableElemet;
+    //public SpecialElement curHackableElemet;
 
     private BhvActorRootMove m_rootMove;
     private BhvActorIdle m_idle;
@@ -27,7 +25,7 @@ public class ActorController : SpecialElement
         m_idle = new BhvActorIdle(transform, this);
         m_rootMove = new BhvActorRootMove(transform, this);
         fsm.SwitchSate(EHackType.Hacked_Root);
-        ControllerManager.instance.RigisterActor(this);
+        //ControllerManager.instance.RigisterActor(this);
     }
 
     // Start is called before the first frame update
@@ -64,7 +62,7 @@ public class ActorController : SpecialElement
     public override void OnRootHacked()
     {
         base.OnRootHacked();
-        this.curHackableElemet = null;
+        //this.curHackableElemet = null;
         this.fsm.SwitchSate(EHackType.Hacked_Root);
     }
 }

@@ -34,7 +34,7 @@ public class ElementBehaviour<T> where T : SpecialElement
     }
 
 
-    public static ECheckWallType CheckWall(Transform actor, Vector3 start, float distance)
+    public ECheckWallType CheckWall(Transform actor, Vector3 start, float distance)
     {
         ECheckWallType value = ECheckWallType.None;
         var left = Physics2D.RaycastAll(start, Vector2.left, distance);
@@ -55,6 +55,7 @@ public class ElementBehaviour<T> where T : SpecialElement
 
             }
         }
+        //Debug.Log("CheckWall " + value);
         return value;
     }
 }
