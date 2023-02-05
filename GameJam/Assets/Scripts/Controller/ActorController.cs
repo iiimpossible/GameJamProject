@@ -75,6 +75,7 @@ public class ActorController : SpecialElement
         base.OnDie();
         // gameObject.SetActive(false);
         ControllerManager.instance.ActorToStart();
+        AudioManager.instance.PlayStart();
     }
 
     public void SetHackableElement(SpecialElement element)

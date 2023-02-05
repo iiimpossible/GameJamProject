@@ -32,12 +32,12 @@ public class SpecialElement : MonoBehaviour
 
     public virtual void OnNormalHacked()
     {
-
+        AudioManager.instance.PlayNormalHack();
     }
 
     public virtual void OnRootHacked()
     {
-
+        AudioManager.instance.PlayRootHack();
     }
 
     public virtual void OnQuitHack()
