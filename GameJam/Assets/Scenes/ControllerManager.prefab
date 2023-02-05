@@ -130,6 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   render: {fileID: 0}
+  trans_leftUP: {fileID: 0}
+  trans_rightUp: {fileID: 0}
+  trans_rightButtom: {fileID: 0}
+  trans_leftButtom: {fileID: 0}
 --- !u!1 &625510045
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   over: {fileID: 0}
   start: {fileID: 1445736544}
-  highLight: {fileID: 141058457}
+  highLight: {fileID: 0}
   actor: {fileID: 0}
   elements: []
 --- !u!1001 &477409605126598812
@@ -511,6 +515,22 @@ PrefabInstance:
     - target: {fileID: 7609404417451799983, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_Name
       value: hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001649224650499575, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: m_Size.x
+      value: 0.22747312
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001649224650499575, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: m_Size.y
+      value: 0.24261951
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001649224650499575, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0046088323
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001649224650499575, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.03704655
       objectReference: {fileID: 0}
     - target: {fileID: 8924595511295740179, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: detect
