@@ -468,6 +468,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5071129750822027455}
     m_Modifications:
+    - target: {fileID: 4104840927679259233, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
+      propertyPath: m_GravityScale
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7609404417451799952, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: m_RootOrder
       value: 2
