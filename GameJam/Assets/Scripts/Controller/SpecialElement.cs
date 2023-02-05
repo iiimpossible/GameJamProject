@@ -52,15 +52,25 @@ public class SpecialElement : MonoBehaviour
 
     }
 
-    public SpriteRenderer OnSelected()
+    public void OnEnterHackMode()
     {
         seletedHihglight?.gameObject.SetActive(true);
+    }
+
+    public void OnQuitHackMode()
+    {
+        seletedHihglight?.gameObject.SetActive(false);
+    }
+
+    public SpriteRenderer OnSelected()
+    {
+        seletedHihglight?.Find("arrow")?.gameObject.SetActive(true);// gameObject.SetActive(true);
         return realRender;
     }
 
     public void OnOutSelected()
     {
-        seletedHihglight?.gameObject.SetActive(false);
+        seletedHihglight?.Find("arrow")?.gameObject.SetActive(false);
     }
 
     public bool IsMoving()

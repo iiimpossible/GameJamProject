@@ -71,24 +71,31 @@ public class ControllerManager : MonoBehaviour
     public void QuitHackMode()
     {
         GameStateManager.instance.SwitchState(EGameStateType.NomalGame);
-        highLight.gameObject.SetActive(false);
+        //highLight.gameObject.SetActive(false);
+        foreach (var item in elements) {
+            item.OnQuitHackMode();
+        }
     }
 
     public void EnterHackMode()
     {
         GameStateManager.instance.SwitchState(EGameStateType.HackingGame);
+        foreach (var item in elements) {
+            item.OnEnterHackMode();
+        }
         this.NextHack();
     }
     public void NextHack()
     {
+        this.CloseAllArrow();
         if (GameStateManager.instance.GetGameStateType() == EGameStateType.HackingGame) {
             if (elements.Count > index) {
                 var item = elements[index];
                 m_curSelected = item;
-                highLight.gameObject.SetActive(true);
+                //highLight.gameObject.SetActive(true);
                 var render = item.OnSelected();
-                highLight.Locate(render);
-                highLight.transform.position = item.transform.position;
+                //highLight.Locate(render);
+                //highLight.transform.position = item.transform.position;
                 index++;
                 if (index >= elements.Count) {
                     index = 0;
@@ -98,14 +105,23 @@ public class ControllerManager : MonoBehaviour
 
     }
 
+    private void CloseAllArrow()
+    {
+        foreach (var item in elements) {
+            item.OnOutSelected();
+        }
+    }
+
     public void LastHack()
     {
+        this.CloseAllArrow();
         if (GameStateManager.instance.GetGameStateType() == EGameStateType.HackingGame) {
             if (elements.Count > index) {
                 var item = elements[index];
                 m_curSelected = item;
-                highLight.gameObject.SetActive(true);
-                highLight.transform.position = item.transform.position;
+                item.OnSelected();
+                //highLight.gameObject.SetActive(true);
+                //highLight.transform.position = item.transform.position;
                 index--;
                 if (index < 0) {
                     index = elements.Count - 1;
