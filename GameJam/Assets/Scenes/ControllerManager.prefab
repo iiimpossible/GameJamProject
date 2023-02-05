@@ -402,7 +402,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5071129750822027455}
   - component: {fileID: 5071129750822027452}
-  - component: {fileID: 5071129750822027453}
   m_Layer: 0
   m_Name: ControllerManager
   m_TagString: Untagged
@@ -444,18 +443,6 @@ MonoBehaviour:
   highLight: {fileID: 141058457}
   actor: {fileID: 0}
   elements: []
---- !u!114 &5071129750822027453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5071129750822027450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29c4f12e4288e9429d15bb9299058b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &477409605126598812
 PrefabInstance:
   m_ObjectHideFlags: 0
