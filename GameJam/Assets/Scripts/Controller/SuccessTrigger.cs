@@ -18,6 +18,7 @@ public class SuccessTrigger : MonoBehaviour
     void Update()
     {
         if (BhvActorIdle.CheckBoxWithActor(transform, detectSize, Vector3.zero, detectSize.y * distance)) {
+            SceneLoadManager.instance.LoadNext();
             Debug.Log("´³¹Ø³É¹¦");
         }
     }
