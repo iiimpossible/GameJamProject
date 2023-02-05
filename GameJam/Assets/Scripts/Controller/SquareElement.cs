@@ -16,10 +16,10 @@ public class SquareElement : SpecialElement
     private BhvSquareRootMove m_rootMove;
     private BhvSquareNormalMove m_normalMove;
     private BhvSquareIdle m_idle;
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D rig;
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rig = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     protected override void Start()
@@ -49,6 +49,7 @@ public class SquareElement : SpecialElement
     {
         base.OnIdle();
         this.fsm.SwitchSate(EHackType.Idle);
+        rig.bodyType = RigidbodyType2D.Static;
     }
 
     public override void OnNormalHacked()
@@ -56,6 +57,7 @@ public class SquareElement : SpecialElement
         base.OnNormalHacked();
         if (m_normalMove.reached) return;
         this.fsm.SwitchSate(EHackType.Hacked_Normal);
+        rig.bodyType = RigidbodyType2D.Static;
     }
 
     public override void OnRootHacked()
@@ -63,12 +65,14 @@ public class SquareElement : SpecialElement
         base.OnRootHacked();
 
         this.fsm.SwitchSate(EHackType.Hacked_Root);
+        rig.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public override void OnQuitHack()
     {
         base.OnQuitHack();
         this.fsm.SwitchSate(EHackType.Idle);
+        rig.bodyType = RigidbodyType2D.Static;
         Debug.Log("OnQuitHack");
     }
 

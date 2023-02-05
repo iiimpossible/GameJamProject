@@ -28,7 +28,11 @@ public class ControllerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+# if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.N)) {
+            actor.transform.position = GameObject.Find("SuccessTrigger").transform.position;
+        }
+#endif
     }
 
 
@@ -157,6 +161,7 @@ public class ControllerManager : MonoBehaviour
 
     public bool IsHacking()
     {
+        Debug.Log("IsHacking " + (m_curHackedElement != null));
         return m_curHackedElement != null;
     }
 }

@@ -110,6 +110,7 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
                     e?.OnNormalHacked();
                 }
             }
+            Debug.Log("ActorRoot H");
         }
 
     }

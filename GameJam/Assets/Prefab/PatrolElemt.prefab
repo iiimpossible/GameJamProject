@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837dca00ad1499f459b2a9514e56f975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realRender: {fileID: 0}
+  seletedHihglight: {fileID: 0}
   wallDetectDistance: 0.5
   jumpFactor: 1
   mass: 0.5
@@ -213,6 +215,8 @@ MonoBehaviour:
   origin: {x: 0, y: 0, z: 0}
   end: {x: 1.35, y: 0, z: 0}
   detectSize: {x: 0.17, y: 0.18}
+  detectHorizetal: 0
+  detectVertical: 0
   speed: 0.71
   fSM:
     state: 

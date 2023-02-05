@@ -32,29 +32,42 @@ public class TurminatorController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (state == ETurminatorState.Idle) {
+            if (collision.name == ControllerManager.instance.GetActor().name) {
+                isEnter = true;
+                Debug.Log("OnTriggerEnter2D");
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        if (collision.name == ControllerManager.instance.GetActor().name) {
+            isEnter = false;
+            ControllerManager.instance.QuitHackMode();
+            state = ETurminatorState.Idle;
+            Debug.Log("OnTriggerExit2D");
+        }
+
+    }
+
+    private void On(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
+
     private void OnDrawGizmos()
     {
-        BhvActorIdle.DebugDrawBox(transform.position + offset, detectSize);
+        //BhvActorIdle.DebugDrawBox(transform.position + offset, detectSize);
     }
 
     private void Idle()
     {
-        if (BhvActorIdle.CheckBoxWithActor(transform, detectSize, offset)) {
-            if (!isEnter) {
-                Debug.Log("Press J to Hack");
-            }
-            isEnter = true;
-        } else {
-            if (isEnter) {
-                Debug.Log("Exit region");
-                ControllerManager.instance.QuitHackMode();
-                state = ETurminatorState.Idle;
-            }
-            isEnter = false;
-        }
-
         if (isEnter) {
-            if (Input.GetKeyDown(KeyCode.J)) {
+            if (Input.GetKeyDown(KeyCode.H)) {
                 ControllerManager.instance.EnterHackMode();
                 state = ETurminatorState.Hacking;
             }
@@ -76,7 +89,7 @@ public class TurminatorController : MonoBehaviour
             state = ETurminatorState.Idle;
         }
 
-        if (Input.GetKeyDown(KeyCode.J)) {
+        if (Input.GetKeyDown(KeyCode.H)) {
             if (ControllerManager.instance.IsHacking()) return;
             var elemet = ControllerManager.instance.GetSelectedElement();
             if (elemet != null) {
@@ -84,7 +97,7 @@ public class TurminatorController : MonoBehaviour
                 ControllerManager.instance.EnterHack(elemet);
                 this.state = ETurminatorState.Idle;
             }
-
+            Debug.Log("TurminatorController H");
         }
     }
 

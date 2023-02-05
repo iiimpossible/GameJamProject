@@ -10,10 +10,10 @@ public class ThornElement : SpecialElement
 
     private BhvThornWarning m_warning;
     private BhvSquareRootMove m_root;
-
+    private Rigidbody2D rig;
     private void Awake()
     {
-
+        rig = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -41,12 +41,14 @@ public class ThornElement : SpecialElement
     {
         fsm.SwitchSate(EHackType.Idle);
         base.OnIdle();
+        rig.bodyType = RigidbodyType2D.Static;
     }
 
     public override void OnRootHacked()
     {
         fsm.SwitchSate(EHackType.Hacked_Root);
         base.OnRootHacked();
+        rig.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public override void OnNormalHacked()
@@ -58,6 +60,7 @@ public class ThornElement : SpecialElement
     {
         base.OnQuitHack();
         this.fsm.SwitchSate(EHackType.Idle);
+        rig.bodyType = RigidbodyType2D.Static;
     }
 
     private void OnDrawGizmos()

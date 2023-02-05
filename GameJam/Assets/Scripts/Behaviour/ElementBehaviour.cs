@@ -110,7 +110,6 @@ public class ElementBehaviour<T> where T : SpecialElement
                 }
             }
         }
-        Debug.Log("CheckBoxWithElmentArray " + hits.Length);
         return temp.ToArray();
     }
 
