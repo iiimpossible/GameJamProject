@@ -105,7 +105,11 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
 
         if (Input.GetKeyDown(KeyCode.H)) {
             var e = element.GetElement();
-            e?.OnNormalHacked();
+            if (e != null) {
+                if (!e.IsNormalHacked()) {
+                    e?.OnNormalHacked();
+                }
+            }
         }
 
     }

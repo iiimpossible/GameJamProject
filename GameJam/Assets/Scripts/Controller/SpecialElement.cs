@@ -83,4 +83,9 @@ public class SpecialElement : MonoBehaviour
         m_isMoving = move;
     }
 
+    public virtual bool IsNormalHacked()
+    {
+        return false;
+    }
+
 }
