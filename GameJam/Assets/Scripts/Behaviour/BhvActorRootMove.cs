@@ -103,7 +103,7 @@ public class BhvActorRootMove : ElementBehaviour<ActorController>
 
         }
 
-        if (Input.GetKeyDown(KeyCode.J)) {
+        if (Input.GetKeyDown(KeyCode.H)) {
             var e = element.GetElement();
             e?.OnNormalHacked();
         }

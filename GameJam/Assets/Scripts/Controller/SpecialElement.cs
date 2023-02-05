@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpecialElement : MonoBehaviour
 {
+    public SpriteRenderer realRender;
+    public Transform seletedHihglight;
     /// <summary>
     /// 检测是否碰到两边的墙的偏移
     /// </summary>
@@ -48,6 +50,17 @@ public class SpecialElement : MonoBehaviour
     public virtual void OnDie()
     {
 
+    }
+
+    public SpriteRenderer OnSelected()
+    {
+        seletedHihglight?.gameObject.SetActive(true);
+        return realRender;
+    }
+
+    public void OnOutSelected()
+    {
+        seletedHihglight?.gameObject.SetActive(false);
     }
 
     public bool IsMoving()

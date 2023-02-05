@@ -8,7 +8,7 @@ public class ControllerManager : MonoBehaviour
 
     public GameObject over;
     public GameObject start;
-    public GameObject highLight;
+    public SelectFrame highLight;
     [SerializeField]
     private ActorController actor;
     [SerializeField]
@@ -56,6 +56,7 @@ public class ControllerManager : MonoBehaviour
         actor.OnRootHacked();
         foreach (var item in elements) {
             item.OnQuitHack();
+            item.OnOutSelected();
         }
         m_curHackedElement = null;
     }
@@ -85,6 +86,8 @@ public class ControllerManager : MonoBehaviour
                 var item = elements[index];
                 m_curSelected = item;
                 highLight.gameObject.SetActive(true);
+                var render = item.OnSelected();
+                highLight.Locate(render);
                 highLight.transform.position = item.transform.position;
                 index++;
                 if (index >= elements.Count) {
@@ -118,6 +121,7 @@ public class ControllerManager : MonoBehaviour
 
     public void ActorToStart()
     {
+        AudioManager.instance.PlayStart();
         actor.transform.position = start.transform.position;
     }
 
