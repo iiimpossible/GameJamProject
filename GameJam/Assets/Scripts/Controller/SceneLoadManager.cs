@@ -8,7 +8,7 @@ public class SceneLoadManager : MonoBehaviour
 
     public List<string> m_scenes = new List<string>();
 
-    private int index = 0;
+    private int index = 1;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -16,7 +16,9 @@ public class SceneLoadManager : MonoBehaviour
 
     public void LoadNext()
     {
+        Debug.Log("LoadNext " + index);
         SceneManager.LoadScene(index);
         index++;
+
     }
 }

@@ -68,6 +68,7 @@ public class TurminatorController : MonoBehaviour
     {
         if (isEnter) {
             if (Input.GetKeyDown(KeyCode.H)) {
+                if (ControllerManager.instance.IsHacking()) return;
                 ControllerManager.instance.EnterHackMode();
                 state = ETurminatorState.Hacking;
             }

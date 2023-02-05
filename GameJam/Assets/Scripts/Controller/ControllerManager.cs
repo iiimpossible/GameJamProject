@@ -9,6 +9,7 @@ public class ControllerManager : MonoBehaviour
     public GameObject over;
     public GameObject start;
     public SelectFrame highLight;
+    public HackBg hackbg;
     [SerializeField]
     private ActorController actor;
     [SerializeField]
@@ -22,6 +23,10 @@ public class ControllerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        var go = GameObject.Find("Bg img");
+        if (go != null) {
+            hackbg = go.GetComponent<HackBg>();
+        }
 
     }
 
@@ -65,8 +70,9 @@ public class ControllerManager : MonoBehaviour
         this.QuitHack();
         actor.OnIdle();
         element.OnRootHacked();
-        this.QuitHackMode();
         m_curHackedElement = element;
+        this.QuitHackMode();
+        hackbg?.ShowHacking();
     }
 
     public void QuitHack()
@@ -77,6 +83,7 @@ public class ControllerManager : MonoBehaviour
             item.OnOutSelected();
         }
         m_curHackedElement = null;
+        hackbg?.CloseHack();
     }
 
     public ActorController GetActor()
@@ -93,6 +100,12 @@ public class ControllerManager : MonoBehaviour
         foreach (var item in elements) {
             item.OnQuitHackMode();
         }
+        if (IsHacking()) {
+            hackbg?.ShowHacking();
+        } else {
+            hackbg?.CloseHack();
+        }
+
     }
 
     public void EnterHackMode()
@@ -101,6 +114,7 @@ public class ControllerManager : MonoBehaviour
         foreach (var item in elements) {
             item.OnEnterHackMode();
         }
+        hackbg?.ShowStartHack();
         this.NextHack();
     }
     public void NextHack()
@@ -162,6 +176,6 @@ public class ControllerManager : MonoBehaviour
     public bool IsHacking()
     {
         Debug.Log("IsHacking " + (m_curHackedElement != null));
-        return m_curHackedElement != null;
+        return this.actor.IsIdle();
     }
 }

@@ -459,8 +459,10 @@ MonoBehaviour:
   over: {fileID: 0}
   start: {fileID: 1445736544}
   highLight: {fileID: 0}
+  hackbg: {fileID: 0}
   actor: {fileID: 0}
   elements: []
+  fires: []
 --- !u!1001 &477409605126598812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -542,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8924595511295740179, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: jumpFactor
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8924595511295740179, guid: f5e0443ca0e7b414b90e0db703c09046, type: 3}
       propertyPath: wallDetectDistance

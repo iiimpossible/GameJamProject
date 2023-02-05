@@ -87,4 +87,9 @@ public class ActorController : SpecialElement
         return m_curHackableElement;
     }
 
+    public bool IsIdle()
+    {
+        return fsm.IsEqualEnum(EHackType.Idle);
+    }
+
 }
