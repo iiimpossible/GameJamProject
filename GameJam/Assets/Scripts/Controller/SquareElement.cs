@@ -6,8 +6,9 @@ public class SquareElement : SpecialElement
 {
 
 
-
+    public Vector2 actorDetectSize;
     public float idleCheckDistance;
+
     [SerializeField]
     public Vector2 moveDistance;
     [SerializeField]
@@ -15,9 +16,10 @@ public class SquareElement : SpecialElement
     private BhvSquareRootMove m_rootMove;
     private BhvSquareNormalMove m_normalMove;
     private BhvSquareIdle m_idle;
+    public Rigidbody2D rigidbody;
     private void Awake()
     {
-
+        rigidbody = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     protected override void Start()
@@ -68,5 +70,10 @@ public class SquareElement : SpecialElement
         base.OnQuitHack();
         this.fsm.SwitchSate(EHackType.Idle);
         Debug.Log("OnQuitHack");
+    }
+
+    public override bool IsNormalHacked()
+    {
+        return m_normalMove.reached;
     }
 }

@@ -87,7 +87,6 @@ public class ElementBehaviour<T> where T : SpecialElement
     public static GameObject CheckBoxWithElment(Transform trans, Vector2 size, float distance, Vector3 offset = default, params string[] layers)
     {
         var hits = Physics2D.BoxCastAll(trans.transform.position + offset, size, 0, Vector2.up, size.y * distance);
-        Debug.Log(hits.Length);
         foreach (var item in hits) {
             foreach (var l in layers) {
 
@@ -111,6 +110,7 @@ public class ElementBehaviour<T> where T : SpecialElement
                 }
             }
         }
+        Debug.Log("CheckBoxWithElmentArray " + hits.Length);
         return temp.ToArray();
     }
 

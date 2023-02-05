@@ -13,6 +13,7 @@ public class ControllerManager : MonoBehaviour
     private ActorController actor;
     [SerializeField]
     public List<SpecialElement> elements = new List<SpecialElement>();
+    public List<FireController> fires = new List<FireController>();
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -36,9 +37,22 @@ public class ControllerManager : MonoBehaviour
         this.elements.Add(element);
     }
 
+    public void RigisterFire(FireController fire)
+    {
+        this.fires.Add(fire);
+    }
+
     public void RigisterActor(ActorController actor)
     {
         this.actor = actor;
+    }
+
+    public void SwichFire()
+    {
+        foreach (var item in fires) {
+            item.Switch();
+        }
+        Debug.Log("SwichFire " + fires.Count);
     }
 
     private SpecialElement m_curHackedElement;
